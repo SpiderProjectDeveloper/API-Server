@@ -1,0 +1,45 @@
+{
+  "version":"0.0.1",
+  "list" : [
+  {
+    "command" : "login",
+    "title": "Вход пользователя",
+    "parameters": "Параметры: user - логин; password - пароль",
+    "sampleParameters" : { "command" : "login", "user" : "ivanov", "password" : "ivanov" },
+    "result": "sessId - ключ сессии в случае успеха, пустое в случае ошибки, error - содержит пустую строку в случае успеха или текст ошибки",
+    "sampleResult" : { "error": "", "sessId": "1j2hgdu74,ofgwigewghv2r823wekrwehr" }
+  },
+  {
+    "command": "logout",
+    "title": "Выход пользователя",
+    "parameters": "Параметры: sessId - ключ сессии",
+    "sampleParameters" : { "command" : "logout", "sessId" : "1j2hgdu74,ofgwigewghv2r823wekrwehr" },
+    "result": "error - содержит пустую строку в случае успеха или текст ошибки",
+    "sampleResult" : { "error": "" }
+  },
+  {
+    "command": "openProject",
+    "title": "Открыть проект",
+    "parameters": "fileName - имя файла в папке, назначенной пользователю, sessId - ключ сессии",
+    "sampleParameters" : { "command" : "openProject", "fileName": "1234.sprj", "sessId" : "1j2hgdu74,ofgwigewghv2r823wekrwehr" },
+    "result": "handle - хэндл (идентификатор) проекта, 0 - ошибка, error - содержит пустую строку в случае успеха или текст ошибки",
+    "sampleResult" : { "error": "", "handle":"1234567890" }
+  },
+  {
+    "command": "saveProject",
+    "title": "Сохранить проект",
+    "parameters": "handle - хэндл (идентификатор) проекта, sessId - ключ сессии",
+    "sampleParameters" : { "command" : "saveProject", "handle": "1234567890", "sessId" : "1j2hgdu74,ofgwigewghv2r823wekrwehr" },
+    "result": "error - содержит пустую строку в случае успеха или текст ошибки",
+    "sampleResult" : { "error": "" }
+  },
+  {
+    "command":"graphs",
+    "title": "Получить графики",
+    "parameters": "Нет параметров",
+    "sampleParameters" : { "sessId":"1j2hgdu74,ofgwigewghv2r823wekrwehr", "command":"graphs" },
+    "result": "error - содержит пустую строку в случае успеха или текст ошибки",
+    "sampleResult" : { "error": "", "graphs": [ { "array": [ [1,2],[2,4],[3,1],[4,2] ] } ] }
+  }
+  ]
+}
