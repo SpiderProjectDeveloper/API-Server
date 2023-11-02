@@ -27,12 +27,13 @@
 
 struct ServerData {
   char* user;           // user code (login)
+	char* sess_id;
   int message_id;       // id of the message sent to spider
   char* message;        // text of the message sent to spider
   int message_size;     // size of message
 
   char* sp_response_buf;         // spider response
-  size_t sp_response_buf_size;   // size of the sp_response_buf
+  unsigned long sp_response_buf_size;   // size of the sp_response_buf
   bool sp_free_response_buf;     // server must free memory allocated for sp_response_buf
   bool sp_response_is_file;      // whether response is the full name of a file
 };

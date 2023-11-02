@@ -125,7 +125,7 @@ int start( StartServerData *ssd, callback_ptr callback ) {
 
 static int server( StartServerData *ssd, callback_ptr callback )
 {
-    size_t result;    
+  size_t result;    
 	int client_socket = INVALID_SOCKET;
 
 	for (;;) {
@@ -189,12 +189,12 @@ static int server( StartServerData *ssd, callback_ptr callback )
 	}
 
 	// Closing everything...
-    error_message("Closing everything!");    
-    if( _listen_socket != INVALID_SOCKET ) {
-	    closesocket(_listen_socket);
-        _listen_socket = INVALID_SOCKET;
-    }
+	error_message("Closing everything!");    
+	if( _listen_socket != INVALID_SOCKET ) {
+		closesocket(_listen_socket);
+		_listen_socket = INVALID_SOCKET;
+	}
 	WSACleanup();
-    thread_manager_stop();
+  thread_manager_stop();
 	return 0;
 }

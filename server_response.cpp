@@ -31,8 +31,12 @@ static const char _http_auth_error_json_message[] =
     "HTTP/1.1 200 OK\r\nContent-Length:26\r\nContent-Type:application/json; charset=utf-8\r\nAccess-Control-Allow-Origin: *\r\n\r\n{\"error\":\"Not authorized\"}";
 
 static const char _http_ok_options_header[] = 
-    "HTTP/1.1 200 OK\r\nAccess-Control-Allow-Origin: *\r\nAccess-Control-Allow-Methods: POST, GET, OPTIONS\r\n"
-    "Access-Control-Allow-Headers: Content-Type\r\n\r\n";
+		"HTTP/1.1 200 Ok\r\n"
+		"Access-Control-Allow-Origin: *\r\n"
+		"Access-Control-Allow-Methods: POST, GET, HEAD, OPTIONS\r\n"
+		"Access-Control-Allow-Credentials: true\r\n"
+		"Access-Control-Allow-Headers: cache-control, x-requested-with, Content-Type, Cookie\r\n"
+		"Content-Type: text/html; charset=utf-8\r\n\r\n";
 
 static constexpr int _max_response_size = 99999999;
 
@@ -41,7 +45,7 @@ static char _http_header_buf[_http_header_buf_size + 1];
 
 
 #define ALLOWED_URI_NUM 4
-static char *_allowed_uri[] = { "/", "/index.html", "/index_bundle.js", "/favicon.ico" }; 
+static char *_allowed_uri[] = { "/", "/index.html", "/bundle.js", "/favicon.ico" }; 
 
 #define MAX_ID 100
 #define MAX_USER 100
@@ -73,6 +77,7 @@ class ServerDataWrapper {
 	
 	ServerDataWrapper() {
 		sd.user = nullptr;
+		sd.sess_id = nullptr;
 		sd.message = nullptr;
 		sd.sp_response_buf = nullptr;
 		sd.sp_free_response_buf = false;
