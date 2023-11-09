@@ -38,7 +38,7 @@ static const char _http_ok_options_header[] =
 		"Access-Control-Allow-Headers: cache-control, x-requested-with, Content-Type, Cookie\r\n"
 		"Content-Type: text/html; charset=utf-8\r\n\r\n";
 
-static constexpr int _max_response_size = 99999999;
+static constexpr int _max_response_size = 1024*1024*250;
 
 static constexpr int _http_header_buf_size = sizeof(_http_ok_json_header_template) + 10;
 static char _http_header_buf[_http_header_buf_size + 1];
@@ -65,7 +65,7 @@ class ResponseWrapper {
 
 	~ResponseWrapper() {
 		if( body_allocated != nullptr ) {
-			delete [] body;
+			delete [] body_allocated;
 		}
 	}	
 };
